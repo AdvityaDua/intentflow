@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: intentflow
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        value: sqlite:///./intentflow.db
+      - key: WHISPER_MODEL
+        value: tiny
+      - key: LOG_LEVEL
+        value: INFO
